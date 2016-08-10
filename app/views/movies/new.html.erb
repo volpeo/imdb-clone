@@ -1,0 +1,13 @@
+<h2>Add a movie</h2>
+
+<%= simple_form_for @movie do |f| %>
+  <%= f.error_notification %>
+
+  <%= f.input :title %>
+  <%= f.input :synopsis %>
+  <%= f.input :director %>
+  <%= f.input :year %>
+  <%= f.input :genre, collection: Movie.genres %>
+
+  <%= f.button :submit, "Create movie" %>
+<% end %>

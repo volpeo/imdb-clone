@@ -1,0 +1,28 @@
+<h2>
+  <%= @movie.title %>
+</h2>
+<p class="text-muted">
+  <%= @movie.year %> -
+  <%= @movie.genre %> -
+  <%= @movie.director %>
+</p>
+<p><%= @movie.synopsis %></p>
+
+<h3>Add a review</h3>
+
+<%= simple_form_for [@movie, @review] do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :author %>
+  <%= f.input :content %>
+  <%= f.input :rating %>
+
+  <%= f.button :submit, "Add my review" %>
+<% end %>
+
+<h3>All reviews (Avg <%= @movie.average_rating %>)</h3>
+
+<% @movie.reviews.each do |review| %>
+  <h4><%= review.author %></h4>
+  <p class="text-muted">Rated <%= review.rating %>/5</p>
+  <p><%= review.content %></p>
+<% end %>
